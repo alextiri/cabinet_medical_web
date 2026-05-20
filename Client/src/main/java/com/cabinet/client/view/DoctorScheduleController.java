@@ -90,9 +90,7 @@ public class DoctorScheduleController {
                 return new SimpleStringProperty("Unknown");
             }
 
-            return new SimpleStringProperty(
-                    patient.getLastName() + " " + patient.getFirstName()
-            );
+            return new SimpleStringProperty(patient.getLastName() + " " + patient.getFirstName());
         });
 
         dateColumn.setCellValueFactory(cellData -> {
@@ -111,21 +109,11 @@ public class DoctorScheduleController {
         statusColumn.setCellValueFactory(cellData -> {
             AppointmentStatus status = cellData.getValue().getStatus();
             ResourceBundle bundle = LanguageManager.getBundle();
-            String translatedStatus;
-
-            switch (status) {
-                case SCHEDULED:
-                    translatedStatus = bundle.getString("status.scheduled");
-                    break;
-                case COMPLETED:
-                    translatedStatus = bundle.getString("status.completed");
-                    break;
-                case CANCELLED:
-                    translatedStatus = bundle.getString("status.cancelled");
-                    break;
-                default:
-                    translatedStatus = status.toString();
-            }
+            String translatedStatus = switch (status) {
+                case SCHEDULED -> bundle.getString("status.scheduled");
+                case COMPLETED -> bundle.getString("status.completed");
+                case CANCELLED -> bundle.getString("status.cancelled");
+            };
 
             return new SimpleStringProperty(translatedStatus);
         });
@@ -275,12 +263,10 @@ public class DoctorScheduleController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(
                             "/com/cabinet/client/consultation-dialog-view.fxml"),
                             LanguageManager.getBundle()
-                    );
+            );
 
             Parent root = loader.load();
-
             ConsultationDialogController controller = loader.getController();
-
             controller.setAppointment(appointment);
 
             Stage stage = new Stage();

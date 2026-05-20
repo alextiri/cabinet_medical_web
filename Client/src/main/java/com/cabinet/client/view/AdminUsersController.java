@@ -45,14 +45,10 @@ public class AdminUsersController {
     private List<User> allUsers;
     private String getTranslatedRole(UserRole role) {
         return switch (role) {
-            case ALL ->
-                    LanguageManager.getBundle().getString("role.all");
-            case ADMIN ->
-                    LanguageManager.getBundle().getString("role.admin");
-            case DOCTOR ->
-                    LanguageManager.getBundle().getString("role.doctor");
-            case ASSISTANT ->
-                    LanguageManager.getBundle().getString("role.assistant");
+            case ALL -> LanguageManager.getBundle().getString("role.all");
+            case ADMIN -> LanguageManager.getBundle().getString("role.admin");
+            case DOCTOR -> LanguageManager.getBundle().getString("role.doctor");
+            case ASSISTANT -> LanguageManager.getBundle().getString("role.assistant");
         };
     }
 
@@ -119,10 +115,7 @@ public class AdminUsersController {
                 }
         );
 
-        roleFilterCombo.setButtonCell(
-                roleFilterCombo.getCellFactory().call(null)
-        );
-
+        roleFilterCombo.setButtonCell(roleFilterCombo.getCellFactory().call(null));
         roleFilterCombo.setValue(UserRole.ALL);
 
         searchField.textProperty().addListener((obs, oldVal, newVal) -> {
@@ -136,7 +129,6 @@ public class AdminUsersController {
         userTable.getSelectionModel()
                 .selectedItemProperty()
                 .addListener((obs, oldUser, selectedUser) -> {
-
                     if (selectedUser == null) {
                         return;
                     }
@@ -149,13 +141,11 @@ public class AdminUsersController {
                 });
 
         userTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_FLEX_LAST_COLUMN);
-
         loadUsers();
     }
 
     private void loadUsers() {
         UserService userService = new UserService();
-
         userService.getAllUsers()
                 .thenAccept(users -> {
                     Platform.runLater(() -> {
@@ -174,21 +164,12 @@ public class AdminUsersController {
         UserRole selectedRole = roleFilterCombo.getValue();
 
         List<User> filtered = allUsers.stream()
-                        .filter(user -> {
-                            boolean matchesSearch =
-                                    user.getUsername()
-                                            .toLowerCase()
-                                            .contains(search);
-
-                            boolean matchesRole =
-                                    selectedRole == UserRole.ALL
-                                            || user.getRole()
-                                            .equals(selectedRole);
-
-                            return matchesSearch
-                                    && matchesRole;
-                        })
-                        .toList();
+                .filter(user -> {
+                    boolean matchesSearch = user.getUsername().toLowerCase().contains(search);
+                    boolean matchesRole = selectedRole == UserRole.ALL || user.getRole().equals(selectedRole);
+                    return matchesSearch && matchesRole;
+                })
+                .toList();
 
         userTable.setItems(FXCollections.observableArrayList(filtered));
     }

@@ -32,17 +32,14 @@ public class AssistantController {
     protected void onPatientsClick() {
         SceneManager.switchScene("assistant-patients-view.fxml");
     }
-
     @FXML
     protected void onAppointmentsClick() {
         SceneManager.switchScene("assistant-appointments-view.fxml");
     }
-
     @FXML
     protected void onStatisticsClick() {
         SceneManager.switchScene("assistant-statistics-view.fxml");
     }
-
     @FXML
     protected void onLogoutClick() {
         Session.clear();

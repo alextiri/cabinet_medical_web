@@ -46,7 +46,6 @@ public class AssistantStatisticsController {
 
         service.getAllPatients()
                 .thenAccept(patients -> {
-
                     allPatients = patients;
 
                     Platform.runLater(() -> {
@@ -69,7 +68,6 @@ public class AssistantStatisticsController {
 
         service.getAllConsultations()
                 .thenAccept(consultations -> {
-
                     allConsultations = consultations;
 
                     Platform.runLater(() -> {
@@ -84,13 +82,11 @@ public class AssistantStatisticsController {
         }
 
         long maleCount = allPatients.stream()
-                        .filter(patient ->
-                                "M".equalsIgnoreCase(patient.getGender()))
+                        .filter(patient -> "M".equalsIgnoreCase(patient.getGender()))
                         .count();
 
         long femaleCount = allPatients.stream()
-                        .filter(patient ->
-                                "F".equalsIgnoreCase(patient.getGender()))
+                        .filter(patient -> "F".equalsIgnoreCase(patient.getGender()))
                         .count();
 
         ObservableList<PieChart.Data> data =
@@ -117,10 +113,7 @@ public class AssistantStatisticsController {
 
             diagnosisCounts.put(
                     diagnosis,
-                    diagnosisCounts.getOrDefault(
-                            diagnosis,
-                            0
-                    ) + 1
+                    diagnosisCounts.getOrDefault(diagnosis, 0) + 1
             );
         }
 
@@ -156,35 +149,17 @@ public class AssistantStatisticsController {
                 }
 
                 if (age <= 18) {
-                    groups.put(
-                            "0-18",
-                            groups.get("0-18") + 1
-                    );
+                    groups.put("0-18", groups.get("0-18") + 1);
                 } else if (age <= 30) {
-                    groups.put(
-                            "19-30",
-                            groups.get("19-30") + 1
-                    );
+                    groups.put("19-30", groups.get("19-30") + 1);
                 } else if (age <= 40) {
-                    groups.put(
-                            "31-40",
-                            groups.get("31-40") + 1
-                    );
+                    groups.put("31-40", groups.get("31-40") + 1);
                 } else if (age <= 50) {
-                    groups.put(
-                            "41-50",
-                            groups.get("41-50") + 1
-                    );
+                    groups.put("41-50", groups.get("41-50") + 1);
                 } else if (age <= 65) {
-                    groups.put(
-                            "51-65",
-                            groups.get("51-65") + 1
-                    );
+                    groups.put("51-65", groups.get("51-65") + 1);
                 } else {
-                    groups.put(
-                            "65+",
-                            groups.get("65+") + 1
-                    );
+                    groups.put("65+",groups.get("65+") + 1);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -209,12 +184,12 @@ public class AssistantStatisticsController {
         CategoryAxis xAxis = (CategoryAxis) ageChart.getXAxis();
 
         xAxis.setCategories(FXCollections.observableArrayList(
-                        "0-18",
-                        "19-30",
-                        "31-40",
-                        "41-50",
-                        "51-65",
-                        "65+"
+                "0-18",
+                "19-30",
+                "31-40",
+                "41-50",
+                "51-65",
+                "65+"
                 )
         );
 

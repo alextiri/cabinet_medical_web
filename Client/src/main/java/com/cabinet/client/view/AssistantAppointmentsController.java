@@ -106,18 +106,12 @@ public class AssistantAppointmentsController implements IAppointmentView {
             ResourceBundle bundle = LanguageManager.getBundle();
 
             String translatedStatus = switch (status) {
-                case SCHEDULED ->
-                        bundle.getString("status.scheduled");
-                case COMPLETED ->
-                        bundle.getString("status.completed");
-
-                case CANCELLED ->
-                        bundle.getString("status.cancelled");
+                case SCHEDULED -> bundle.getString("status.scheduled");
+                case COMPLETED -> bundle.getString("status.completed");
+                case CANCELLED -> bundle.getString("status.cancelled");
             };
 
-            return new SimpleStringProperty(
-                    translatedStatus
-            );
+            return new SimpleStringProperty(translatedStatus);
         });
 
         appointmentsTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_ALL_COLUMNS);
@@ -133,12 +127,9 @@ public class AssistantAppointmentsController implements IAppointmentView {
                         } else {
                             ResourceBundle bundle = LanguageManager.getBundle();
                             switch (item) {
-                                case SCHEDULED ->
-                                        setText(bundle.getString("status.scheduled"));
-                                case COMPLETED ->
-                                        setText(bundle.getString("status.completed"));
-                                case CANCELLED ->
-                                        setText(bundle.getString("status.cancelled"));
+                                case SCHEDULED -> setText(bundle.getString("status.scheduled"));
+                                case COMPLETED -> setText(bundle.getString("status.completed"));
+                                case CANCELLED -> setText(bundle.getString("status.cancelled"));
                             }
                         }
                     }
@@ -158,12 +149,9 @@ public class AssistantAppointmentsController implements IAppointmentView {
                         } else {
                             ResourceBundle bundle = LanguageManager.getBundle();
                             switch (item) {
-                                case SCHEDULED ->
-                                        setText(bundle.getString("status.scheduled"));
-                                case COMPLETED ->
-                                        setText(bundle.getString("status.completed"));
-                                case CANCELLED ->
-                                        setText(bundle.getString("status.cancelled"));
+                                case SCHEDULED -> setText(bundle.getString("status.scheduled"));
+                                case COMPLETED -> setText(bundle.getString("status.completed"));
+                                case CANCELLED -> setText(bundle.getString("status.cancelled"));
                             }
                         }
                     }
@@ -260,17 +248,13 @@ public class AssistantAppointmentsController implements IAppointmentView {
 
                     Patient patient = allPatients.stream()
                             .filter(p ->
-                                    p.getId().equals(
-                                            selectedAppointment.getPatientId()
-                                    ))
+                                    p.getId().equals(selectedAppointment.getPatientId()))
                             .findFirst()
                             .orElse(null);
 
                     Doctor doctor = allDoctors.stream()
                             .filter(d ->
-                                    d.getId().equals(
-                                            selectedAppointment.getDoctorId()
-                                    ))
+                                    d.getId().equals(selectedAppointment.getDoctorId()))
                             .findFirst()
                             .orElse(null);
 
@@ -339,17 +323,14 @@ public class AssistantAppointmentsController implements IAppointmentView {
                 .filter(appointment -> {
                     Patient patient = allPatients.stream()
                             .filter(p ->
-                                    p.getId().equals(
-                                            appointment.getPatientId()
-                                    ))
+                                    p.getId().equals(appointment.getPatientId()))
                             .findFirst()
                             .orElse(null);
                     if (patient == null) {
                         return false;
                     }
 
-                    String patientName =
-                            (patient.getLastName() + " " + patient.getFirstName()).toLowerCase();
+                    String patientName = (patient.getLastName() + " " + patient.getFirstName()).toLowerCase();
 
                     boolean matchesSearch = patientName.contains(search);
                     boolean matchesDoctor = selectedDoctor == null || appointment.getDoctorId().equals(selectedDoctor.getId());
@@ -365,10 +346,7 @@ public class AssistantAppointmentsController implements IAppointmentView {
                         }
                     }
 
-                    return matchesSearch &&
-                            matchesDoctor &&
-                            matchesStatus &&
-                            matchesDate;
+                    return matchesSearch && matchesDoctor && matchesStatus && matchesDate;
                 })
                 .toList();
         appointmentsTable.setItems(FXCollections.observableArrayList(filtered));
@@ -475,9 +453,7 @@ public class AssistantAppointmentsController implements IAppointmentView {
 
     @FXML
     protected void onBackClick() {
-        SceneManager.switchScene(
-                "assistant-dashboard-view.fxml"
-        );
+        SceneManager.switchScene("assistant-dashboard-view.fxml");
     }
 
     @Override

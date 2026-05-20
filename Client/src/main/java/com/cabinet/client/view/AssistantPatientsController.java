@@ -106,7 +106,6 @@ public class AssistantPatientsController implements IPatientView {
 
         nameColumn.setCellValueFactory(cellData -> {
             Patient patient = cellData.getValue();
-
             return new SimpleStringProperty(patient.getLastName() + " " + patient.getFirstName());
         });
 
@@ -330,9 +329,7 @@ public class AssistantPatientsController implements IPatientView {
                     return matchesSearch && matchesDiagnosis && matchesAge;
                 })
                 .toList();
-        System.out.println(
-                "Filtered patients: " + filtered.size()
-        );
+        System.out.println("Filtered patients: " + filtered.size());
         patientTable.setItems(FXCollections.observableArrayList(filtered));
     }
 
@@ -387,9 +384,7 @@ public class AssistantPatientsController implements IPatientView {
             patient.setGender(genderCombo.getValue());
 
             if (birthDatePicker.getValue() != null) {
-                patient.setBirthDate(
-                        birthDatePicker.getValue().toString()
-                );
+                patient.setBirthDate(birthDatePicker.getValue().toString());
             }
 
             patient.setPhone(phoneField.getText());
@@ -457,9 +452,7 @@ public class AssistantPatientsController implements IPatientView {
     @Override
     public void showPatients(List<Patient> patients) {
         Platform.runLater(() -> {
-            System.out.println(
-                    "Patients received: " + patients.size()
-            );
+            System.out.println("Patients received: " + patients.size());
             allPatients = patients;
             filterPatients();
         });
@@ -490,35 +483,13 @@ public class AssistantPatientsController implements IPatientView {
         FileChooser chooser = new FileChooser();
         chooser.setTitle("Export Data");
         if (format.equals("CSV")) {
-            chooser.getExtensionFilters().add(
-                    new FileChooser.ExtensionFilter(
-                            "CSV Files",
-                            "*.csv"
-                    )
-            );
-
+            chooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("CSV Files", "*.csv"));
         } else if (format.equals("JSON")) {
-            chooser.getExtensionFilters().add(
-                    new FileChooser.ExtensionFilter(
-                            "JSON Files",
-                            "*.json"
-                    )
-            );
+            chooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("JSON Files", "*.json"));
         } else if (format.equals("TXT")) {
-            chooser.getExtensionFilters().add(
-                    new FileChooser.ExtensionFilter(
-                            "Text Files",
-                            "*.txt"
-                    )
-            );
-
+            chooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Text Files", "*.txt"));
         } else if (format.equals("XML")) {
-            chooser.getExtensionFilters().add(
-                    new FileChooser.ExtensionFilter(
-                            "XML Files",
-                            "*.xml"
-                    )
-            );
+            chooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("XML Files", "*.xml"));
         }
 
         File file = chooser.showSaveDialog(patientTable.getScene().getWindow());
@@ -532,42 +503,18 @@ public class AssistantPatientsController implements IPatientView {
             if (exportType == ExportType.PATIENTS) {
                 List<Patient> patients = List.copyOf(patientTable.getItems());
                 switch (format) {
-                    case "CSV" -> exportService.exportToCSV(
-                            patients,
-                            file
-                    );
-                    case "JSON" -> exportService.exportToJSON(
-                            patients,
-                            file
-                    );
-                    case "TXT" -> exportService.exportToTXT(
-                            patients,
-                            file
-                    );
-                    case "XML" -> exportService.exportToXML(
-                            patients,
-                            file
-                    );
+                    case "CSV" -> exportService.exportToCSV(patients, file);
+                    case "JSON" -> exportService.exportToJSON(patients, file);
+                    case "TXT" -> exportService.exportToTXT(patients, file);
+                    case "XML" -> exportService.exportToXML(patients, file);
                 }
 
             } else if (exportType == ExportType.DOCTORS) {
                 switch (format) {
-                    case "CSV" -> exportService.exportToCSV(
-                            allDoctors,
-                            file
-                    );
-                    case "JSON" -> exportService.exportToJSON(
-                            allDoctors,
-                            file
-                    );
-                    case "TXT" -> exportService.exportToTXT(
-                            allDoctors,
-                            file
-                    );
-                    case "XML" -> exportService.exportToXML(
-                            allDoctors,
-                            file
-                    );
+                    case "CSV" -> exportService.exportToCSV(allDoctors, file);
+                    case "JSON" -> exportService.exportToJSON(allDoctors, file);
+                    case "TXT" -> exportService.exportToTXT(allDoctors, file);
+                    case "XML" -> exportService.exportToXML(allDoctors, file);
                 }
             }
 
