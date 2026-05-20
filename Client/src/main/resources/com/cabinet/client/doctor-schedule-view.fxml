@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="750.0"
+            prefWidth="1200.0"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.cabinet.client.view.DoctorScheduleController">
+
+    <top>
+        <VBox spacing="15">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+
+            <Label text="%doctor.schedule.title"
+                   style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+
+            <GridPane hgap="15" vgap="10">
+                <Label text="%common.day"
+                       style="-fx-font-weight: bold;"
+                       GridPane.rowIndex="0"
+                       GridPane.columnIndex="0"/>
+
+                <Label text="%doctor.current.schedule"
+                       style="-fx-font-weight: bold;"
+                       GridPane.rowIndex="0"
+                       GridPane.columnIndex="1"/>
+
+                <Label text="%doctor.new.schedule"
+                       style="-fx-font-weight: bold;"
+                       GridPane.rowIndex="0"
+                       GridPane.columnIndex="2"/>
+
+                <Label text="%day.monday"
+                       GridPane.rowIndex="1"
+                       GridPane.columnIndex="0"/>
+
+                <Label fx:id="mondayCurrentLabel"
+                       text="-"
+                       GridPane.rowIndex="1"
+                       GridPane.columnIndex="1"/>
+
+                <TextField fx:id="mondayField"
+                           promptText="08:00-16:00"
+                           prefWidth="180"
+                           GridPane.rowIndex="1"
+                           GridPane.columnIndex="2"/>
+
+                <Label text="%day.tuesday"
+                       GridPane.rowIndex="2"
+                       GridPane.columnIndex="0"/>
+
+                <Label fx:id="tuesdayCurrentLabel"
+                       text="-"
+                       GridPane.rowIndex="2"
+                       GridPane.columnIndex="1"/>
+
+                <TextField fx:id="tuesdayField"
+                           promptText="08:00-16:00"
+                           prefWidth="180"
+                           GridPane.rowIndex="2"
+                           GridPane.columnIndex="2"/>
+
+                <Label text="%day.wednesday"
+                       GridPane.rowIndex="3"
+                       GridPane.columnIndex="0"/>
+
+                <Label fx:id="wednesdayCurrentLabel"
+                       text="-"
+                       GridPane.rowIndex="3"
+                       GridPane.columnIndex="1"/>
+
+                <TextField fx:id="wednesdayField"
+                           promptText="08:00-16:00"
+                           prefWidth="180"
+                           GridPane.rowIndex="3"
+                           GridPane.columnIndex="2"/>
+
+                <Label text="%day.thursday"
+                       GridPane.rowIndex="4"
+                       GridPane.columnIndex="0"/>
+
+                <Label fx:id="thursdayCurrentLabel"
+                       text="-"
+                       GridPane.rowIndex="4"
+                       GridPane.columnIndex="1"/>
+
+                <TextField fx:id="thursdayField"
+                           promptText="08:00-16:00"
+                           prefWidth="180"
+                           GridPane.rowIndex="4"
+                           GridPane.columnIndex="2"/>
+
+                <Label text="%day.friday"
+                       GridPane.rowIndex="5"
+                       GridPane.columnIndex="0"/>
+
+                <Label fx:id="fridayCurrentLabel"
+                       text="-"
+                       GridPane.rowIndex="5"
+                       GridPane.columnIndex="1"/>
+
+                <TextField fx:id="fridayField"
+                           promptText="08:00-16:00"
+                           prefWidth="180"
+                           GridPane.rowIndex="5"
+                           GridPane.columnIndex="2"/>
+            </GridPane>
+
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Button text="%doctor.save.schedule"
+                        onAction="#onSaveOfficeHoursClick"
+                        style="-fx-background-color: #7DA2A9;
+                               -fx-text-fill: white;
+                               -fx-font-weight: bold;" />
+
+                <Label text="%common.show" />
+
+                <ComboBox fx:id="filterCombo"
+                          prefWidth="170" />
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="15">
+            <padding>
+                <Insets left="20" right="20" bottom="20"/>
+            </padding>
+
+            <Label text="%common.appointments"
+                   style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+
+            <TableView fx:id="appointmentTable"
+                       VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="patientColumn"
+                                 text="%common.patient"
+                                 prefWidth="300" />
+
+                    <TableColumn fx:id="dateColumn"
+                                 text="%common.date"
+                                 prefWidth="300" />
+
+                    <TableColumn fx:id="statusColumn"
+                                 text="%common.status"
+                                 prefWidth="180" />
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+
+    <bottom>
+        <HBox alignment="CENTER_LEFT"
+              spacing="10">
+
+            <padding>
+                <Insets right="20" bottom="20" left="20"/>
+            </padding>
+
+            <Button text="%common.back"
+                    onAction="#onBackClick"
+                    style="-fx-background-color: #D9534F;
+                           -fx-text-fill: white;
+                           -fx-font-weight: bold;" />
+
+        </HBox>
+    </bottom>
+
+</BorderPane>

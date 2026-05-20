@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.cabinet.client.view.DoctorPatientController">
+
+    <top>
+        <HBox spacing="10"
+              alignment="CENTER_LEFT"
+              style="-fx-padding: 15;">
+
+            <Button text="Back"
+                    onAction="#onBackClick" />
+
+            <Label text="%doctor.search.patients" />
+
+            <TextField fx:id="searchPatientField"
+                       promptText="%doctor.search.placeholder"
+                       prefWidth="220" />
+
+            <Label text="%doctor.filter.consultations" />
+
+            <TextField fx:id="searchConsultationField"
+                       promptText="%doctor.consultation.placeholder"
+                       prefWidth="220" />
+
+            <Button text="%common.reset.filters"
+                    onAction="#onResetFiltersClick"
+                    style="-fx-background-color: #d6d6d6;
+               -fx-background-radius: 8;
+               -fx-font-size: 14;
+               -fx-padding: 8 18;" />
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="15"
+              style="-fx-padding: 15;">
+
+            <Label text="%common.patients"
+                   style="-fx-font-size: 18;
+                          -fx-font-weight: bold;" />
+
+            <TableView fx:id="patientTable"
+                       prefHeight="400"
+                       VBox.vgrow="ALWAYS">
+
+                <columns>
+                    <TableColumn fx:id="nameColumn"
+                                 text="%patient.name" />
+
+                    <TableColumn fx:id="cnpColumn"
+                                 text="CNP" />
+
+                    <TableColumn fx:id="sexColumn"
+                                 text="%patient.sex" />
+
+                    <TableColumn fx:id="birthDateColumn"
+                                 text="%patient.birth.date" />
+                </columns>
+            </TableView>
+
+            <Label text="%common.consultations"
+                   style="-fx-font-size: 18;
+                          -fx-font-weight: bold;" />
+
+            <TableView fx:id="consultationTable"
+                       prefHeight="250">
+
+                <columns>
+                    <TableColumn fx:id="dateColumn"
+                                 text="%common.date" />
+
+                    <TableColumn fx:id="symptomsColumn"
+                                 text="%consultation.symptoms" />
+
+                    <TableColumn fx:id="diagnosisColumn"
+                                 text="%consultation.diagnosis" />
+
+                    <TableColumn fx:id="treatmentColumn"
+                                 text="%consultation.treatment" />
+
+                    <TableColumn fx:id="observationsColumn"
+                                 text="%consultation.observations" />
+                </columns>
+            </TableView>
+
+        </VBox>
+    </center>
+
+</BorderPane>

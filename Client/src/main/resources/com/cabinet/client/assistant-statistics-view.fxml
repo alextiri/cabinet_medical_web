@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefWidth="1600"
+            prefHeight="900"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.cabinet.client.view.AssistantStatisticsController"
+            style="-fx-background-color: #F4F4F4;">
+
+    <center>
+
+        <VBox spacing="24">
+            <padding>
+                <Insets top="24"
+                        right="24"
+                        bottom="24"
+                        left="24"/>
+            </padding>
+
+            <Label text="%statistics.dashboard"
+                   style="
+                        -fx-font-size: 34px;
+                        -fx-font-weight: bold;
+                   "/>
+
+            <GridPane hgap="24"
+                      vgap="24">
+
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="50"/>
+                    <ColumnConstraints percentWidth="50"/>
+                </columnConstraints>
+
+                <VBox spacing="12"
+                      GridPane.rowIndex="0"
+                      GridPane.columnIndex="0"
+                      style="
+                            -fx-background-color: white;
+                            -fx-background-radius: 16;
+                            -fx-padding: 20;
+                            -fx-effect: dropshadow(
+                                    gaussian,
+                                    rgba(0,0,0,0.08),
+                                    10,
+                                    0,
+                                    0,
+                                    2
+                            );
+                      ">
+
+                    <Label text="%statistics.gender"
+                           style="
+                                -fx-font-size: 20px;
+                                -fx-font-weight: bold;
+                           "/>
+
+                    <PieChart fx:id="genderChart"
+                              prefHeight="320"/>
+
+                </VBox>
+
+                <VBox spacing="12"
+                      GridPane.rowIndex="0"
+                      GridPane.columnIndex="1"
+                      style="
+                            -fx-background-color: white;
+                            -fx-background-radius: 16;
+                            -fx-padding: 20;
+                            -fx-effect: dropshadow(
+                                    gaussian,
+                                    rgba(0,0,0,0.08),
+                                    10,
+                                    0,
+                                    0,
+                                    2
+                            );
+                      ">
+
+                    <Label text="%statistics.diagnosis"
+                           style="
+                                -fx-font-size: 20px;
+                                -fx-font-weight: bold;
+                           "/>
+
+                    <PieChart fx:id="diagnosisChart"
+                              prefHeight="320"/>
+
+                </VBox>
+
+                <VBox spacing="12"
+                      GridPane.rowIndex="1"
+                      GridPane.columnIndex="0"
+                      GridPane.columnSpan="2"
+                      style="
+                            -fx-background-color: white;
+                            -fx-background-radius: 16;
+                            -fx-padding: 20;
+                            -fx-effect: dropshadow(
+                                    gaussian,
+                                    rgba(0,0,0,0.08),
+                                    10,
+                                    0,
+                                    0,
+                                    2
+                            );
+                      ">
+
+                    <Label text="%statistics.age"
+                           style="
+                                -fx-font-size: 20px;
+                                -fx-font-weight: bold;
+                           "/>
+
+                    <BarChart fx:id="ageChart"
+                              prefHeight="420">
+
+                        <xAxis>
+                            <CategoryAxis label="%statistics.axis.age"/>
+                        </xAxis>
+
+                        <yAxis>
+                            <NumberAxis label="%statistics.axis.patients"/>
+                        </yAxis>
+
+                    </BarChart>
+                </VBox>
+            </GridPane>
+        </VBox>
+    </center>
+
+    <bottom>
+        <HBox alignment="CENTER_RIGHT">
+            <padding>
+                <Insets right="24"
+                        bottom="24"/>
+            </padding>
+
+            <Button text="%common.back"
+                    onAction="#onBackClick"
+                    prefWidth="140"
+                    prefHeight="42"
+                    style="
+                        -fx-background-color: #4A90E2;
+                        -fx-text-fill: white;
+                        -fx-font-size: 14px;
+                        -fx-font-weight: bold;
+                        -fx-background-radius: 10;
+                    "/>
+        </HBox>
+    </bottom>
+
+</BorderPane>

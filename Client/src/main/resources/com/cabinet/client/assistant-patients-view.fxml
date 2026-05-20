@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="750.0"
+            prefWidth="1300.0"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.cabinet.client.view.AssistantPatientsController"
+            style="-fx-background-color: #F4F4F4;">
+
+    <top>
+        <VBox spacing="16">
+            <padding>
+                <Insets top="20"
+                        right="20"
+                        bottom="10"
+                        left="20"/>
+            </padding>
+
+            <Label text="%assistant.patient.management"
+                   style="
+                        -fx-font-size: 28px;
+                        -fx-font-weight: bold;
+                   "/>
+
+
+            <HBox spacing="18"
+                  alignment="BOTTOM_LEFT">
+                <VBox spacing="5">
+                    <Label text="%common.search"/>
+
+                    <TextField fx:id="searchField"
+                               promptText="%assistant.search.patient"
+                               prefWidth="240"/>
+
+                </VBox>
+                <VBox spacing="5">
+                    <Label text="%common.doctor"/>
+
+                    <ComboBox fx:id="doctorFilterCombo"
+                              prefWidth="200"/>
+                </VBox>
+                <VBox spacing="5">
+
+                    <Label text="%common.diagnosis"/>
+
+                    <TextField fx:id="diagnosisFilterField"
+                               promptText="%assistant.filter.diagnosis"
+                               prefWidth="220"/>
+                </VBox>
+                <VBox spacing="5">
+
+                    <Label text="%common.min.age"/>
+
+                    <TextField fx:id="ageFilterField"
+                               promptText="%assistant.age.placeholder"
+                               prefWidth="90"/>
+
+                </VBox>
+                <Button text="%common.reset.filters"
+                        onAction="#onResetFiltersClick"
+                        prefHeight="40"
+                        style="
+                            -fx-background-color: #909090;
+                            -fx-text-fill: white;
+                            -fx-font-weight: bold;
+                            -fx-background-radius: 8;
+                        "/>
+
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="12">
+            <padding>
+                <Insets left="20"
+                        right="20"/>
+            </padding>
+
+            <TableView fx:id="patientTable"
+                       VBox.vgrow="ALWAYS">
+
+                <columns>
+                    <TableColumn fx:id="nameColumn"
+                                 text="%patient.full.name"
+                                 prefWidth="220"/>
+
+                    <TableColumn fx:id="genderColumn"
+                                 text="%patient.gender"
+                                 prefWidth="90"/>
+
+                    <TableColumn fx:id="birthDateColumn"
+                                 text="%patient.birth.date"
+                                 prefWidth="140"/>
+
+                    <TableColumn fx:id="cnpColumn"
+                                 text="%patient.cnp"
+                                 prefWidth="180"/>
+
+                    <TableColumn fx:id="phoneColumn"
+                                 text="%patient.phone"
+                                 prefWidth="150"/>
+
+                    <TableColumn fx:id="emailColumn"
+                                 text="%patient.email"
+                                 prefWidth="220"/>
+
+                    <TableColumn fx:id="addressColumn"
+                                 text="%patient.address"
+                                 prefWidth="220"/>
+
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+
+    <bottom>
+        <HBox spacing="40">
+            <padding>
+                <Insets top="14"
+                        right="20"
+                        bottom="20"
+                        left="20"/>
+            </padding>
+
+            <VBox spacing="16">
+                <Label text="%assistant.patient.details"
+                       style="
+                        -fx-font-size: 20px;
+                        -fx-font-weight: bold;
+                   "/>
+
+                <GridPane hgap="40"
+                          vgap="14">
+
+                    <VBox spacing="5"
+                          GridPane.rowIndex="0"
+                          GridPane.columnIndex="0">
+
+                        <Label text="%patient.first.name"/>
+
+                        <TextField fx:id="firstNameField"
+                                   prefWidth="320"/>
+
+                    </VBox>
+                    <VBox spacing="5"
+                          GridPane.rowIndex="0"
+                          GridPane.columnIndex="1">
+
+                        <Label text="%patient.last.name"/>
+
+                        <TextField fx:id="lastNameField"
+                                   prefWidth="320"/>
+                    </VBox>
+                    <VBox spacing="5"
+                          GridPane.rowIndex="1"
+                          GridPane.columnIndex="0">
+
+                        <Label text="%patient.cnp"/>
+
+                        <TextField fx:id="cnpField"
+                                   prefWidth="320"/>
+
+                    </VBox>
+                    <VBox spacing="5"
+                          GridPane.rowIndex="1"
+                          GridPane.columnIndex="1">
+
+                        <Label text="%patient.gender"/>
+
+                        <ComboBox fx:id="genderCombo"
+                                  prefWidth="320"/>
+
+                    </VBox>
+                    <VBox spacing="5"
+                          GridPane.rowIndex="2"
+                          GridPane.columnIndex="0">
+
+                        <Label text="%patient.birth.date"/>
+
+                        <DatePicker fx:id="birthDatePicker"
+                                    prefWidth="320"/>
+
+                    </VBox>
+                    <VBox spacing="5"
+                          GridPane.rowIndex="2"
+                          GridPane.columnIndex="1">
+
+                        <Label text="%patient.phone"/>
+
+                        <TextField fx:id="phoneField"
+                                   prefWidth="320"/>
+
+                    </VBox>
+                    <VBox spacing="5"
+                          GridPane.rowIndex="3"
+                          GridPane.columnIndex="0">
+
+                        <Label text="%patient.email"/>
+
+                        <TextField fx:id="emailField"
+                                   prefWidth="320"/>
+
+                    </VBox>
+                    <VBox spacing="5"
+                          GridPane.rowIndex="3"
+                          GridPane.columnIndex="1">
+
+                        <Label text="%patient.address"/>
+
+                        <TextField fx:id="addressField"
+                                   prefWidth="320"/>
+
+                    </VBox>
+                </GridPane>
+                <HBox spacing="18">
+                    <Button text="%common.add.patient"
+                            onAction="#onAddPatientClick"
+                            prefWidth="180"
+                            prefHeight="44"
+                            style="
+                            -fx-background-color: #6FA87D;
+                            -fx-text-fill: white;
+                            -fx-font-weight: bold;
+                            -fx-background-radius: 8;
+                        "/>
+
+                    <Button text="%common.update.patient"
+                            onAction="#onUpdatePatientClick"
+                            prefWidth="200"
+                            prefHeight="44"
+                            style="
+                            -fx-background-color: #7DA2A9;
+                            -fx-text-fill: white;
+                            -fx-font-weight: bold;
+                            -fx-background-radius: 8;
+                        "/>
+
+                    <Button text="%common.delete.patient"
+                            onAction="#onDeletePatientClick"
+                            prefWidth="200"
+                            prefHeight="44"
+                            style="
+                            -fx-background-color: #D9534F;
+                            -fx-text-fill: white;
+                            -fx-font-weight: bold;
+                            -fx-background-radius: 8;
+                        "/>
+
+                    <Button text="%common.reset.fields"
+                            onAction="#onResetFieldsClick"
+                            prefWidth="180"
+                            prefHeight="44"
+                            style="
+                            -fx-background-color: #909090;
+                            -fx-text-fill: white;
+                            -fx-font-weight: bold;
+                            -fx-background-radius: 8;
+                        "/>
+
+                    <Button text="%common.back"
+                            onAction="#onBackClick"
+                            prefWidth="140"
+                            prefHeight="44"
+                            style="
+                            -fx-background-color: #5C88A8;
+                            -fx-text-fill: white;
+                            -fx-font-weight: bold;
+                            -fx-background-radius: 8;
+                        "/>
+                </HBox>
+            </VBox>
+            <Region HBox.hgrow="ALWAYS"/>
+            <VBox spacing="18"
+                  prefWidth="280"
+                  style="
+                    -fx-background-color: white;
+                    -fx-background-radius: 12;
+                    -fx-padding: 24;
+                    -fx-border-color: #DDDDDD;
+                    -fx-border-radius: 12;
+              ">
+
+                <Label text="%common.export"
+                       style="
+                        -fx-font-size: 22px;
+                        -fx-font-weight: bold;
+                   "/>
+
+                <VBox spacing="6">
+                    <Label text="%common.export.type"/>
+
+                    <ComboBox fx:id="exportTypeCombo"
+                              prefWidth="220"/>
+
+                </VBox>
+                <VBox spacing="6">
+
+                    <Label text="%common.export.format"/>
+
+                    <ComboBox fx:id="exportFormatCombo"
+                              prefWidth="220"/>
+
+                </VBox>
+                <Button text="%common.export"
+                        onAction="#onExportClick"
+                        prefWidth="220"
+                        prefHeight="44"
+                        style="
+                        -fx-background-color: #5C9BCF;
+                        -fx-text-fill: white;
+                        -fx-font-weight: bold;
+                        -fx-font-size: 14px;
+                        -fx-background-radius: 8;
+                    "/>
+            </VBox>
+        </HBox>
+    </bottom>
+</BorderPane>

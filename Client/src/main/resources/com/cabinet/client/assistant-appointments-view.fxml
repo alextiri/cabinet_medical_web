@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.cabinet.client.view.AssistantAppointmentsController"
+            style="-fx-background-color: #F4F4F4;">
+
+    <center>
+        <VBox spacing="24">
+            <padding>
+                <Insets top="24"
+                        right="24"
+                        bottom="24"
+                        left="24"/>
+            </padding>
+
+            <VBox spacing="18">
+                <Label text="%appointments.management"
+                       style="
+                            -fx-font-size: 34px;
+                            -fx-font-weight: bold;
+                       "/>
+
+                <HBox spacing="16"
+                      alignment="CENTER_LEFT">
+
+                    <TextField fx:id="searchField"
+                               promptText="%appointments.search"
+                               prefWidth="280"
+                               prefHeight="42"/>
+
+                    <ComboBox fx:id="doctorFilterCombo"
+                              promptText="%appointments.filter.doctor"
+                              prefWidth="240"
+                              prefHeight="42"/>
+
+                    <ComboBox fx:id="statusFilterCombo"
+                              promptText="%appointments.filter.status"
+                              prefWidth="220"
+                              prefHeight="42"/>
+
+                    <DatePicker fx:id="dateFilterPicker"
+                                prefWidth="220"
+                                prefHeight="42"/>
+
+                    <Button text="%common.reset.filters"
+                            onAction="#onResetFiltersClick"
+                            prefHeight="42"
+                            style="
+                                -fx-background-color: #6B7280;
+                                -fx-text-fill: white;
+                                -fx-font-size: 14px;
+                                -fx-font-weight: bold;
+                                -fx-background-radius: 10;
+                                -fx-padding: 0 20 0 20;
+                            "/>
+
+                </HBox>
+            </VBox>
+
+            <HBox spacing="24"
+                  VBox.vgrow="ALWAYS">
+                <VBox spacing="12"
+                      HBox.hgrow="ALWAYS"
+                      VBox.vgrow="ALWAYS">
+
+                    <Label text="%common.appointments"
+                           style="
+                                -fx-font-size: 26px;
+                                -fx-font-weight: bold;
+                           "/>
+
+                    <TableView fx:id="appointmentsTable"
+                               VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="patientColumn"
+                                         text="%appointments.patient"
+                                         prefWidth="240"/>
+
+                            <TableColumn fx:id="doctorColumn"
+                                         text="%appointments.doctor"
+                                         prefWidth="260"/>
+
+                            <TableColumn fx:id="dateTimeColumn"
+                                         text="%appointments.date.time"
+                                         prefWidth="260"/>
+
+                            <TableColumn fx:id="statusColumn"
+                                         text="%appointments.status"
+                                         prefWidth="180"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+
+                <VBox spacing="16"
+                      prefWidth="360"
+                      style="
+                            -fx-background-color: white;
+                            -fx-background-radius: 16;
+                            -fx-padding: 24;
+                            -fx-effect: dropshadow(
+                                    gaussian,
+                                    rgba(0,0,0,0.08),
+                                    12,
+                                    0,
+                                    0,
+                                    2
+                            );
+                      ">
+
+                    <Label text="%appointments.details"
+                           style="
+                                -fx-font-size: 26px;
+                                -fx-font-weight: bold;
+                           "/>
+
+                    <VBox spacing="6">
+                        <Label text="%appointments.patient"/>
+
+                        <ComboBox fx:id="patientCombo"
+                                  prefHeight="40"/>
+                    </VBox>
+
+                    <VBox spacing="6">
+                        <Label text="%appointments.doctor"/>
+
+                        <ComboBox fx:id="doctorCombo"
+                                  prefHeight="40"/>
+                    </VBox>
+
+                    <VBox spacing="6">
+                        <Label text="%appointments.date"/>
+
+                        <DatePicker fx:id="datePicker"
+                                    prefHeight="40"/>
+                    </VBox>
+
+                    <VBox spacing="6">
+
+                        <Label text="%appointments.time.format"/>
+
+                        <TextField fx:id="timeField"
+                                   promptText="14:30"
+                                   prefHeight="40"/>
+
+                    </VBox>
+
+                    <VBox spacing="6">
+
+                        <Label text="%appointments.status"/>
+
+                        <ComboBox fx:id="statusCombo"
+                                  prefHeight="40"/>
+
+                    </VBox>
+
+                    <Separator/>
+
+                    <VBox spacing="12">
+                        <Button text="%appointments.add"
+                                onAction="#onAddAppointmentClick"
+                                maxWidth="Infinity"
+                                prefHeight="42"
+                                style="
+                                    -fx-background-color: #22C55E;
+                                    -fx-text-fill: white;
+                                    -fx-font-size: 14px;
+                                    -fx-font-weight: bold;
+                                    -fx-background-radius: 10;
+                                "/>
+
+                        <Button text="%appointments.update"
+                                onAction="#onUpdateAppointmentClick"
+                                maxWidth="Infinity"
+                                prefHeight="42"
+                                style="
+                                    -fx-background-color: #38BDF8;
+                                    -fx-text-fill: white;
+                                    -fx-font-size: 14px;
+                                    -fx-font-weight: bold;
+                                    -fx-background-radius: 10;
+                                "/>
+
+                        <Button text="%appointments.delete"
+                                onAction="#onDeleteAppointmentClick"
+                                maxWidth="Infinity"
+                                prefHeight="42"
+                                style="
+                                    -fx-background-color: #EF4444;
+                                    -fx-text-fill: white;
+                                    -fx-font-size: 14px;
+                                    -fx-font-weight: bold;
+                                    -fx-background-radius: 10;
+                                "/>
+
+                        <Button text="%common.reset.fields"
+                                onAction="#onResetFieldsClick"
+                                maxWidth="Infinity"
+                                prefHeight="42"
+                                style="
+                                    -fx-background-color: #6B7280;
+                                    -fx-text-fill: white;
+                                    -fx-font-size: 14px;
+                                    -fx-font-weight: bold;
+                                    -fx-background-radius: 10;
+                                "/>
+
+                    </VBox>
+                </VBox>
+
+            </HBox>
+
+            <HBox alignment="CENTER_LEFT">
+                <padding>
+                    <Insets top="10"/>
+                </padding>
+
+                <Button text="%common.back"
+                        onAction="#onBackClick"
+                        prefWidth="140"
+                        prefHeight="42"
+                        style="
+                            -fx-background-color: #3B82F6;
+                            -fx-text-fill: white;
+                            -fx-font-size: 14px;
+                            -fx-font-weight: bold;
+                            -fx-background-radius: 10;
+                        "/>
+
+            </HBox>
+        </VBox>
+    </center>
+
+</BorderPane>

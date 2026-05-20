@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml"
+           fx:controller="com.cabinet.client.view.LoginController"
+           style="-fx-background-color: #f4f4f4;">
+
+    <VBox spacing="18"
+          alignment="CENTER"
+          maxWidth="380"
+          maxHeight="340"
+          style="
+                -fx-background-color: white;
+                -fx-background-radius: 16;
+                -fx-padding: 32;
+                -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 20, 0, 0, 4);
+          ">
+
+        <Label text="%login.title"
+               style="
+                    -fx-font-size: 24px;
+                    -fx-font-weight: bold;
+               "/>
+
+        <TextField fx:id="usernameField"
+                   promptText="%login.username"
+                   prefHeight="42"
+                   maxWidth="Infinity"
+                   style="
+                        -fx-background-radius: 8;
+                        -fx-font-size: 14px;
+                   "/>
+
+        <PasswordField fx:id="passwordField"
+                       promptText="%login.password"
+                       prefHeight="42"
+                       maxWidth="Infinity"
+                       style="
+                            -fx-background-radius: 8;
+                            -fx-font-size: 14px;
+                       "/>
+
+        <Label fx:id="messageLabel"
+               textFill="#dc2626"
+               wrapText="true"
+               maxWidth="Infinity"
+               style="
+                    -fx-font-size: 13px;
+               "/>
+
+        <Button text="%login.button"
+                onAction="#onLoginClick"
+                maxWidth="Infinity"
+                prefHeight="44"
+                style="
+                    -fx-background-color: #5b7c99;
+                    -fx-text-fill: white;
+                    -fx-font-size: 14px;
+                    -fx-font-weight: bold;
+                    -fx-background-radius: 8;
+                "/>
+
+        <HBox alignment="CENTER_RIGHT"
+              spacing="10"
+              maxWidth="Infinity">
+
+            <Label text="Language"
+                   style="
+                        -fx-font-size: 13px;
+                        -fx-text-fill: #666666;
+                   "/>
+
+            <ComboBox fx:id="languageCombo"
+                      onAction="#onLanguageChange"
+                      prefWidth="140"
+                      prefHeight="36"/>
+
+        </HBox>
+
+    </VBox>
+
+</StackPane>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.cabinet.client.view.AdminUsersController"
+            prefWidth="1600"
+            prefHeight="900">
+
+    <center>
+        <HBox spacing="24"
+              BorderPane.alignment="CENTER">
+
+            <padding>
+                <Insets top="24"
+                        right="24"
+                        bottom="24"
+                        left="24"/>
+            </padding>
+            <VBox spacing="20"
+                  HBox.hgrow="ALWAYS">
+                <Label text="%users.management"
+                       style="-fx-font-size: 28px;
+                              -fx-font-weight: bold;"/>
+
+                <HBox spacing="16"
+                      alignment="CENTER_LEFT">
+                    <TextField fx:id="searchField"
+                               promptText="%users.search"
+                               prefWidth="320"
+                               prefHeight="42"/>
+
+                    <ComboBox fx:id="roleFilterCombo"
+                              prefWidth="220"
+                              prefHeight="42"/>
+
+                    <Button text="%common.reset.filters"
+                            onAction="#onResetFiltersClick"
+                            prefHeight="42"/>
+                </HBox>
+
+                <VBox spacing="0"
+                      VBox.vgrow="ALWAYS"
+                      style="-fx-background-color: white;
+                             -fx-background-radius: 16;
+                             -fx-padding: 16;">
+
+                    <TableView fx:id="userTable"
+                               VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="firstNameColumn"
+                                         text="%users.first.name"/>
+
+                            <TableColumn fx:id="lastNameColumn"
+                                         text="%users.last.name"/>
+
+                            <TableColumn fx:id="usernameColumn"
+                                         text="%users.username"/>
+
+                            <TableColumn fx:id="roleColumn"
+                                         text="%users.role"/>
+                        </columns>
+                    </TableView>
+
+                </VBox>
+            </VBox>
+
+            <VBox spacing="18"
+                  prefWidth="360"
+                  style="-fx-background-color: white;
+                         -fx-background-radius: 16;
+                         -fx-padding: 24;">
+
+                <Label text="%users.details"
+                       style="-fx-font-size: 24px;
+                              -fx-font-weight: bold;"/>
+
+                <Separator/>
+
+                <TextField fx:id="firstNameField"
+                           promptText="%users.first.name"
+                           prefHeight="42"/>
+
+                <TextField fx:id="lastNameField"
+                           promptText="%users.last.name"
+                           prefHeight="42"/>
+
+                <TextField fx:id="usernameField"
+                           promptText="%users.username"
+                           prefHeight="42"/>
+
+                <PasswordField fx:id="passwordField"
+                               promptText="%users.password"
+                               prefHeight="42"/>
+
+                <ComboBox fx:id="roleCombo"
+                          promptText="%users.select.role"
+                          prefHeight="42"/>
+
+                <Separator/>
+
+                <VBox spacing="12">
+                    <Button text="%users.add"
+                            onAction="#onAddUserClick"
+                            prefHeight="44"
+                            maxWidth="Infinity"
+                            style="-fx-background-color: #4CAF50;
+                                   -fx-text-fill: white;
+                                   -fx-font-weight: bold;"/>
+
+                    <Button text="%users.update"
+                            onAction="#onUpdateUserClick"
+                            prefHeight="44"
+                            maxWidth="Infinity"
+                            style="-fx-background-color: #4A90E2;
+                                   -fx-text-fill: white;
+                                   -fx-font-weight: bold;"/>
+
+                    <Button text="%users.delete"
+                            onAction="#onDeleteUserClick"
+                            prefHeight="44"
+                            maxWidth="Infinity"
+                            style="-fx-background-color: #E74C3C;
+                                   -fx-text-fill: white;
+                                   -fx-font-weight: bold;"/>
+
+                    <Button text="%common.reset.fields"
+                            onAction="#onResetFieldsClick"
+                            prefHeight="44"
+                            maxWidth="Infinity"
+                            style="-fx-background-color: #9E9E9E;
+                                   -fx-text-fill: white;
+                                   -fx-font-weight: bold;"/>
+                </VBox>
+
+                <Region VBox.vgrow="ALWAYS"/>
+
+                <Button text="%common.back"
+                        onAction="#onBackClick"
+                        prefHeight="44"
+                        maxWidth="Infinity"
+                        style="-fx-background-color: #607D8B;
+                               -fx-text-fill: white;
+                               -fx-font-weight: bold;"/>
+
+            </VBox>
+
+        </HBox>
+    </center>
+
+</BorderPane>
